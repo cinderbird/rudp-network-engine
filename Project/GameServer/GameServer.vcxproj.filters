@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{2c90de56-139d-41d5-9543-fa6be7d4d213}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{07d1b7d9-61b8-4dfa-80ce-4b055a4d0829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="packet_handler">
+      <UniqueIdentifier>{da3404a0-1858-4350-8e94-b42a7a6b3703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{e9372469-110d-4f79-b964-3fa7eb39f89f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread_manager">
+      <UniqueIdentifier>{c909cbc8-c41f-466b-a29c-67c8f87e1a93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="room">
+      <UniqueIdentifier>{4cb26b6e-9b72-411f-8567-00e653c395ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="actor">
+      <UniqueIdentifier>{08bd52cd-f67b-4752-ba18-d5b270455253}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameServer.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="service\NetworkService.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="packet_handler\RemoteActorProtocolHandler.cpp">
+      <Filter>packet_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="packet_handler\RemoteControlProtocolHandler.cpp">
+      <Filter>packet_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\pch.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="thread_manager\ThreadManager.cpp">
+      <Filter>thread_manager</Filter>
+    </ClCompile>
+    <ClCompile Include="room\RoomManager.cpp">
+      <Filter>room</Filter>
+    </ClCompile>
+    <ClCompile Include="room\Room.cpp">
+      <Filter>room</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\IDAllocator.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="actor\Actor.cpp">
+      <Filter>actor</Filter>
+    </ClCompile>
+    <ClCompile Include="actor\Character.cpp">
+      <Filter>actor</Filter>
+    </ClCompile>
+    <ClCompile Include="actor\Object.cpp">
+      <Filter>actor</Filter>
+    </ClCompile>
+    <ClCompile Include="actor\Player.cpp">
+      <Filter>actor</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\CoreStruct.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="service\NetworkService.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="packet_handler\RemoteActorProtocolHandler.h">
+      <Filter>packet_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="packet_handler\RemoteControlProtocolHandler.h">
+      <Filter>packet_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\pch.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="packet_handler\ProtocolTrait.h">
+      <Filter>packet_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="thread_manager\ThreadManager.h">
+      <Filter>thread_manager</Filter>
+    </ClInclude>
+    <ClInclude Include="room\RoomManager.h">
+      <Filter>room</Filter>
+    </ClInclude>
+    <ClInclude Include="room\Room.h">
+      <Filter>room</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\IDAllocator.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="actor\Actor.h">
+      <Filter>actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor\Character.h">
+      <Filter>actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor\Object.h">
+      <Filter>actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor\Player.h">
+      <Filter>actor</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\CoreStruct.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

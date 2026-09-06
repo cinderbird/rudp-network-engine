@@ -1,0 +1,20 @@
+﻿#pragma once
+
+#define IP_HEADER_SIZE     (20)
+#define UDP_HEADER_SIZE    (IP_HEADER_SIZE+8)
+
+#define SECRET_BYTE_SIZE 64
+#define SECRET_COUNT 2
+#define COOKIE_BYTE_SIZE 20
+
+
+#define BASE_PACKET_SIZE_BITS					82
+#define HANDSHAKE_PACKET_SIZE_BITS				(BASE_PACKET_SIZE_BITS + 225)
+
+#define SECRET_UPDATE_TIME			15.f
+#define SECRET_UPDATE_TIME_VARIANCE	5.f
+
+#define MAX_COOKIE_LIFETIME			((SECRET_UPDATE_TIME + SECRET_UPDATE_TIME_VARIANCE) * (float)SECRET_COUNT)
+#define MIN_COOKIE_LIFETIME			SECRET_UPDATE_TIME
+
+using ReleaseMessageBufferCallback = void (*)(void* Buffer, uint32_t Size, void* Context);

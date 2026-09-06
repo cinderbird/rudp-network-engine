@@ -1,0 +1,33 @@
+syntax = "proto3";
+package GameProtocol;
+
+import "Struct.proto";
+
+message S_Spawn
+{
+    int32 PawnClass = 1;
+    Location NewLocation = 2;
+    Rotation NewRotation = 3;
+}
+
+message C_Spawn
+{
+    int32 PawnClass = 1;
+    Location NewLocation = 2;
+    Rotation NewRotation = 3;
+}
+
+message S_Move
+{
+    int32 ActorId = 1;
+    Location NewCoordinate = 2;
+    Rotation NewRotation = 3;
+}
+
+message C_Move
+{
+    int32 ActorId = 1;
+    Location NewCoordinate = 2;
+    Rotation NewRotation = 3;
+}
+

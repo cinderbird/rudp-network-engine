@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>RUDP Engine Visualizer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+	<h1>RUDP 신뢰성 시각화 <span class="subtitle">GameServer.exe ↔ RemoteServer.exe · 실시간</span></h1>
+	<div class="topbar-controls">
+		<span id="connCount" class="status-pill status-neutral">커넥션 0개</span>
+		<span id="connStatus" class="status-pill status-disconnected">브릿지 연결 중...</span>
+		<button id="btnConnectClient">+ 클라이언트 연결</button>
+		<button id="btnConnectClients100" class="secondary">+ 100개 한번에</button>
+		<button id="btnConnectClients1000" class="secondary">+ 1000개 한번에</button>
+	</div>
+</header>
+
+<main id="stage">
+	<section class="charts-grid">
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>처리량 <span class="chart-unit">패킷/초</span></span>
+				<button class="help-btn" data-help="throughput" aria-label="처리량 설명">?</button>
+			</div>
+			<canvas id="chartThroughput"></canvas>
+			<div class="chart-legend" id="legendThroughput"></div>
+		</div>
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>Ack / Nack <span class="chart-unit">건/초</span></span>
+				<button class="help-btn" data-help="ackNack" aria-label="Ack/Nack 설명">?</button>
+			</div>
+			<canvas id="chartAckNack"></canvas>
+			<div class="chart-legend" id="legendAckNack"></div>
+		</div>
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>패킷 드롭율 <span class="chart-unit">건/초</span></span>
+				<button class="help-btn" data-help="drop" aria-label="드롭율 설명">?</button>
+			</div>
+			<canvas id="chartDrop"></canvas>
+			<div class="chart-legend" id="legendDrop"></div>
+		</div>
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>신뢰성 버퍼 사용률 <span class="chart-unit">% of RELIABLE_BUFFER(512)</span></span>
+				<button class="help-btn" data-help="buffer" aria-label="신뢰성 버퍼 사용률 설명">?</button>
+			</div>
+			<canvas id="chartBuffer"></canvas>
+			<div class="chart-legend" id="legendBuffer"></div>
+		</div>
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>중복 / 재정렬 <span class="chart-unit">건/초</span></span>
+				<button class="help-btn" data-help="dupReorder" aria-label="중복/재정렬 설명">?</button>
+			</div>
+			<canvas id="chartDupReorder"></canvas>
+			<div class="chart-legend" id="legendDupReorder"></div>
+		</div>
+		<div class="chart-box">
+			<div class="chart-title">
+				<span>서버 전역 처리량 <span class="chart-unit">jobs/sec</span></span>
+				<button class="help-btn" data-help="jobsPerSec" aria-label="서버 전역 처리량 설명">?</button>
+			</div>
+			<canvas id="chartJobs"></canvas>
+			<div class="chart-legend" id="legendJobs"></div>
+		</div>
+	</section>
+
+	<section class="table-section table-section-auto">
+		<div class="table-caption">
+			<span>서버 전역 실측치 (NetDriver::EmitStatsSnapshot, 초당 1회)</span>
+			<button class="help-btn" data-help="serverStats" aria-label="서버 전역 실측치 설명">?</button>
+		</div>
+		<div class="stats-readout" id="statsReadout">
+			<span>연결 수: <b id="statConns">-</b></span>
+			<span>TickLoop 스레드: <b id="statTickThreads">-</b></span>
+			<span>IOCP 스레드: <b id="statIoThreads">-</b></span>
+			<span>JobWorker 스레드: <b id="statJobThreads">-</b></span>
+			<span>데이터그램 수신/송신: <b id="statDgram">-</b> /초</span>
+			<span>IO 완료/타임아웃: <b id="statIo">-</b> /초</span>
+		</div>
+		<table id="workerTable">
+			<thead>
+				<tr><th>워커</th><th>OS 스레드</th><th>jobs/sec</th><th>CPU 코어</th></tr>
+			</thead>
+			<tbody id="workerTableBody"></tbody>
+		</table>
+	</section>
+
+	<section class="table-section" id="connTableSection">
+		<div class="table-caption">
+			<span>커넥션별 실측치</span>
+			<button class="help-btn" data-help="packetNotify" aria-label="표 항목 설명">?</button>
+			<button id="btnExpandConnTable" class="caption-link" aria-label="크게 보기">⛶ 크게 보기</button>
+		</div>
+		<table id="connTable">
+			<thead>
+				<tr>
+					<th>클라이언트 · 커넥션</th>
+					<th>핸드셰이크</th>
+					<th colspan="5">서버 시점 (상태 / InSeq(Ack) / OutSeq(Ack) / UnAcked / RTT)</th>
+					<th colspan="5">클라이언트 시점 (상태 / InSeq(Ack) / OutSeq(Ack) / UnAcked / RTT)</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="connTableBody"></tbody>
+		</table>
+	</section>
+</main>
+
+<footer class="controls">
+	<div class="control-group">
+		<label>손실률 (server 기준, %)</label>
+		<div class="slider-row">
+			<span>inbound</span>
+			<input type="range" id="dropInbound" min="0" max="100" value="0">
+			<span id="dropInboundVal">0%</span>
+		</div>
+		<div class="slider-row">
+			<span>outbound</span>
+			<input type="range" id="dropOutbound" min="0" max="100" value="0">
+			<span id="dropOutboundVal">0%</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label>중복 / 재정렬 (server 기준, inbound만)</label>
+		<div class="slider-row">
+			<span>중복률</span>
+			<input type="range" id="dupRate" min="0" max="100" value="0">
+			<span id="dupRateVal">0%</span>
+		</div>
+		<div class="slider-row">
+			<span>재정렬 창</span>
+			<input type="range" id="reorderWindow" min="0" max="20" value="0">
+			<span id="reorderWindowVal">0</span>
+		</div>
+	</div>
+	<div class="control-group event-log-group">
+		<label>이벤트 로그</label>
+		<div id="eventLog" class="event-log"></div>
+	</div>
+</footer>
+
+<script src="connection-table.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

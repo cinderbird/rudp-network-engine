@@ -1,0 +1,13 @@
+{
+  "name": "webviz-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local real-time bridge between the RUDP engine's TelemetrySink (Project/Network/src/telemetry/) and a browser visualization. See docs/web-visualization.md.",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

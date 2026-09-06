@@ -1,0 +1,11 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "webviz-bridge",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["start", "--prefix", "Programs/WebViz"],
+            "port": 8090
+        }
+    ]
+}

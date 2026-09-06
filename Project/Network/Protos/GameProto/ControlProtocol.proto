@@ -1,0 +1,45 @@
+syntax = "proto3";
+package GameProtocol;
+
+import "Struct.proto";
+
+message NMT_Hello //클라 -> 서버
+{
+    string Token = 1;
+    int32 NetworkId = 2;
+}
+
+message NMT_Challenge //서버 -> 클라
+{
+    string Option = 1;
+    string URL = 2;
+}
+
+message NMT_Login //클라 -> 서버
+{
+    string Id = 2;
+    string Password = 3;
+}
+
+message NMT_Welcome //서버 -> 클라
+{
+    string GameName = 1;
+    string WorldName = 2;
+    Character PlayerCharacter = 3;
+}
+
+message NMT_Join
+{
+    int32 Response = 1;
+}
+
+message NMT_NetSpeed
+{
+    uint64 LastAckedPacketTime = 1;
+}
+
+message NMT_Failure
+{
+    int32 ErrorType = 1;
+    int32 ErrorNum = 2;
+}

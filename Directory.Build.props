@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Explicitly wires up the repo-local vcpkg checkout (see bootstrap.bat)
+    for every project in the solution. This makes the build self-contained:
+    it does not depend on the VS "vcpkg package manager" individual
+    component, "vcpkg integrate install" having been run, or a VCPKG_ROOT
+    environment variable: just `git clone` the repo, run bootstrap.bat
+    once, then build.
+  -->
+  <PropertyGroup>
+    <VcpkgRoot Condition="'$(VcpkgRoot)' == ''">$(MSBuildThisFileDirectory)vcpkg\</VcpkgRoot>
+  </PropertyGroup>
+  <Import Project="$(VcpkgRoot)scripts\buildsystems\msbuild\vcpkg.props" Condition="Exists('$(VcpkgRoot)scripts\buildsystems\msbuild\vcpkg.props')" />
+</Project>

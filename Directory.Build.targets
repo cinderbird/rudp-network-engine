@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(VcpkgRoot)scripts\buildsystems\msbuild\vcpkg.targets" Condition="Exists('$(VcpkgRoot)scripts\buildsystems\msbuild\vcpkg.targets')" />
+
+  <!--
+    Force vcpkg to build ports with the exact same MSVC toolset version this
+    project itself resolves to (see triplets/x64-windows-static-md.cmake for
+    why this matters: mismatched toolset versions between vcpkg-built
+    static libs and the project's own link step can cause LNK2019 errors
+    for compiler-internal STL symbols even though everything compiles fine).
+  -->
+  <Target Name="_TaskaPassToolsVersionToVcpkg" BeforeTargets="VcpkgTripletSelection">
+    <SetEnv Name="TOSKA_VCTOOLSVERSION" Value="$(VCToolsVersion)" Prefix="false" />
+  </Target>
+</Project>

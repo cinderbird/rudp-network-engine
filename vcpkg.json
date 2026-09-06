@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "cryptopp",
+    "fmt",
+    "nlohmann-json",
+    "spdlog",
+    "protobuf"
+  ]
+}

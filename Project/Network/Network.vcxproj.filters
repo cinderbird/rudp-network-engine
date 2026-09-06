@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{de589e2f-d45f-403d-a947-585951b444b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{4af56b90-5422-4c21-b9bb-b7f53141d0e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{f15d7382-18cd-4ed4-aac2-e9ba41ecc050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\net_socket">
+      <UniqueIdentifier>{266e3bdb-1ef1-469a-81e6-3561beea7e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\processor">
+      <UniqueIdentifier>{fd62b631-0feb-4857-8792-1d18f2d20393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\connection">
+      <UniqueIdentifier>{81428915-49e9-437b-b33a-9efb13f050dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\net_packet">
+      <UniqueIdentifier>{7157a92a-7fbd-47a7-a6cf-314b676b9047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\channel">
+      <UniqueIdentifier>{8403bf21-4548-4342-9a6d-b5e456133464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sequence">
+      <UniqueIdentifier>{7a74ae3e-777a-4a30-a1df-6989b05dfc52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\protocol_handler">
+      <UniqueIdentifier>{5467243a-2195-434e-a032-33acdce3976a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\driver">
+      <UniqueIdentifier>{edb9acc7-637c-422c-a99a-5e9eb05e3fb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\service">
+      <UniqueIdentifier>{1529efd9-4f20-4776-90fc-86f7d9525fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\simulation">
+      <UniqueIdentifier>{9a2b6a3e-9d3f-4e63-8a1a-2b6f9a2c7d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\thread">
+      <UniqueIdentifier>{67aec7a4-503e-4f24-bc00-05363d4b053b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\telemetry">
+      <UniqueIdentifier>{2c8f1e6a-4b5d-4a2e-9c7f-1d3e6a8b2f9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Struct.pb.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ActorProtocol.pb.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ActorProtocolHandler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ControlProtocol.pb.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ControlProtocolHandler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export_struct.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\INetworkEventNotify.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\INetworkService.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IProtocolHandler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NetMinimalPch.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\AyncyLog.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\IDAllocator.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\NetMacro.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\SocketTypes.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\InternetAddress.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\SocketBuilder.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\Sockets.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\WindowsInternetAddress.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\WindowsSocket.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_socket\WindowsSocketParams.h">
+      <Filter>src\net_socket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\processor\PacketEnum.h">
+      <Filter>src\processor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\processor\PacketPipeline.h">
+      <Filter>src\processor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\processor\PacketProcessor.h">
+      <Filter>src\processor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\ChannelRecord.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\RttTracker.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetMessageReader.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetBunch.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetPacket.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetPacketBuilder.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\PacketEvent.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetBunchReader.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetBunchBuilder.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\channel\NetChannel.h">
+      <Filter>src\channel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net_packet\NetPacketReader.h">
+      <Filter>src\net_packet</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sequence\NetPacketNotify.h">
+      <Filter>src\sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sequence\SequenceHistory.h">
+      <Filter>src\sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sequence\SequenceNumber.h">
+      <Filter>src\sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\channel\ControlChannel.h">
+      <Filter>src\channel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\channel\ActorChannel.h">
+      <Filter>src\channel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\channel\ChannelDefinition.h">
+      <Filter>src\channel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\protocol_handler\ProtocolHandlerManager.h">
+      <Filter>src\protocol_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\DriverSetting.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\ConfigSetting.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\CoreNetType.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\PendingNetConnection.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\PendingNetConnectionManager.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\NetConnection.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\processor\UdpPacketProcessor.h">
+      <Filter>src\processor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\driver\NetDriver.h">
+      <Filter>src\driver</Filter>
+    </ClInclude>
+    <ClInclude Include="src\driver\IpNetDriver.h">
+      <Filter>src\driver</Filter>
+    </ClInclude>
+    <ClInclude Include="src\driver\GameNetDriverResolution.h">
+      <Filter>src\driver</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\GameNetConnection.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connection\NetConnectionResolution.h">
+      <Filter>src\connection</Filter>
+    </ClInclude>
+    <ClInclude Include="src\service\LaDelta.h">
+      <Filter>src\service</Filter>
+    </ClInclude>
+    <ClInclude Include="src\simulation\PacketSimulator.h">
+      <Filter>src\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\telemetry\TelemetrySink.h">
+      <Filter>src\telemetry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\thread\LockQueue.h">
+      <Filter>src\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\thread\JobSystem.h">
+      <Filter>src\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\thread\SListQueue.h">
+      <Filter>src\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\thread\StrongType.h">
+      <Filter>src\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\thread\TypeSafeStruct.h">
+      <Filter>src\thread</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="include\ActorProtocol.pb.cc">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ControlProtocol.pb.cc">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Struct.pb.cc">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\AyncyLog.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\IDAllocator.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_socket\InternetAddress.cpp">
+      <Filter>src\net_socket</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_socket\Sockets.cpp">
+      <Filter>src\net_socket</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_socket\WindowsInternetAddress.cpp">
+      <Filter>src\net_socket</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_socket\WindowsSocket.cpp">
+      <Filter>src\net_socket</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\PacketPipeline.cpp">
+      <Filter>src\processor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\PacketProcessor.cpp">
+      <Filter>src\processor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\ChannelRecord.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\RttTracker.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetBunch.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetPacket.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetPacketBuilder.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\PacketEvent.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetBunchReader.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetBunchBuilder.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\channel\NetChannel.cpp">
+      <Filter>src\channel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_packet\NetPacketReader.cpp">
+      <Filter>src\net_packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sequence\NetPacketNotify.cpp">
+      <Filter>src\sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol_handler\ActorProtocolHandler.cpp">
+      <Filter>src\protocol_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol_handler\ControlProtocolHandler.cpp">
+      <Filter>src\protocol_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\channel\ActorChannel.cpp">
+      <Filter>src\channel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\channel\ChannelDefinition.cpp">
+      <Filter>src\channel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\channel\ControlChannel.cpp">
+      <Filter>src\channel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\protocol_handler\ProtocolHandlerManager.cpp">
+      <Filter>src\protocol_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\DriverSetting.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\PendingNetConnection.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\PendingNetConnectionManager.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\NetConnection.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\UdpPacketProcessor.cpp">
+      <Filter>src\processor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\driver\NetDriver.cpp">
+      <Filter>src\driver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\driver\GameNetDriverResolution.cpp">
+      <Filter>src\driver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\driver\IpNetDriver.cpp">
+      <Filter>src\driver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\NetConnectionResolution.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection\GameNetConnection.cpp">
+      <Filter>src\connection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service\export.cpp">
+      <Filter>src\service</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service\LaDelta.cpp">
+      <Filter>src\service</Filter>
+    </ClCompile>
+    <ClCompile Include="src\service\NetworkService.cpp">
+      <Filter>src\service</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simulation\PacketSimulator.cpp">
+      <Filter>src\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\telemetry\TelemetrySink.cpp">
+      <Filter>src\telemetry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread\LockQueue.cpp">
+      <Filter>src\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread\JobSystem.cpp">
+      <Filter>src\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread\TypeSafeStruct.cpp">
+      <Filter>src\thread</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

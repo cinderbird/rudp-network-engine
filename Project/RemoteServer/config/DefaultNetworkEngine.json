@@ -1,0 +1,31 @@
+{
+    "Network": {
+        "RemoteIp": "127.0.0.1",
+        "RemotePort": 7777,
+        "DriverMode": "Client",
+        "ClientType": "TestClient",
+        "ServerType": "None",
+        "bNoTimeouts": false,
+        "bConnectionlessOnly": true,
+        "KeepAliveTime": 20,
+        "MaxTickRate": 60,
+        "InitialConnectTimeout": 60,
+        "ConnectionTimeout": 60,
+        "MaxChannelsSize": 16,
+        "DesiredRecvSize": 8192,
+        "DesiredSendSize": 8192,
+        "SessionID": 0,
+        "ActiveSecret": 0,
+        "MagicHeaderSizeBits": 1,
+        "MagicHeader": 0,
+        "MagicHeaderOffset": 0,
+        "PacketDropPermille": 0,
+        "PacketDuplicatePermille": 0,
+        "PacketReorderWindow": 0,
+        "PacketDropPermilleOutbound": 0,
+        "PendingConnectionInactivityTimeoutSec": 20.0,
+        "TelemetryPort": 0,
+        "LogLevel": "trace",
+        "SyntheticTrafficHz": 1
+    }
+}

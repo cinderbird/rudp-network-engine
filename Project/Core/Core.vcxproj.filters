@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\BitController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BitReader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BitWriter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MallocBinned.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CoreSTL.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WindowsPlatformTime.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlignTemplate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BitController.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BitReader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BitWriter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BufferReader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ByteSwap.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CoreMemory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EngineBaseTypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MathUtility.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MallocBinned.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Allocator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CorePch.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{8b8867d0-c0c5-491b-a766-729cafe37c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{d1b08e34-d202-471f-94df-d3aa7174a882}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

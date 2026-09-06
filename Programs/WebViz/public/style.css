@@ -1,0 +1,292 @@
+:root {
+	--bg: #0d1117;
+	--panel: #151b23;
+	--panel-border: #262d38;
+	--text: #e6edf3;
+	--text-dim: #a8b3c1;
+	--accent: #4f8fef;
+	--ack: #3ecf8e;
+	--nack: #ef5b5b;
+	--drop: #f0a94b;
+	--handshake: #b98eff;
+	--gauge-track: #232b36;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+	font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 22px;
+	background: var(--panel);
+	border-bottom: 1px solid var(--panel-border);
+	flex-shrink: 0;
+}
+
+.topbar h1 { font-size: 19px; margin: 0; font-weight: 600; }
+.subtitle { font-size: 14px; font-weight: 400; color: var(--text-dim); margin-left: 10px; }
+
+.topbar-controls { display: flex; align-items: center; gap: 12px; }
+
+.status-pill { font-size: 14px; padding: 5px 12px; border-radius: 12px; font-variant-numeric: tabular-nums; }
+.status-connected { background: rgba(62,207,142,0.15); color: var(--ack); }
+.status-disconnected { background: rgba(239,91,91,0.15); color: var(--nack); }
+.status-neutral { background: var(--gauge-track); color: var(--text-dim); }
+
+button {
+	background: var(--accent);
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+}
+button:hover { filter: brightness(1.1); }
+button.small { padding: 3px 10px; font-size: 13px; background: var(--nack); }
+/* "+100"은 "+1"보다 무거운 동작이라 아웃라인 스타일로 보조 버튼처럼 보이게. */
+button.secondary {
+	background: transparent;
+	color: var(--text-dim);
+	border: 1px solid var(--panel-border);
+}
+button.secondary:hover { background: var(--gauge-track); color: var(--text); filter: none; }
+
+/* 원형 "?" 도움말 버튼(팝업은 app.js) -- 가벼운 스타일로 보조 컨트롤임을 표시. */
+.help-btn {
+	width: 22px;
+	height: 22px;
+	min-width: 22px;
+	border-radius: 50%;
+	background: var(--gauge-track);
+	color: var(--text-dim);
+	border: 1px solid var(--panel-border);
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.help-btn:hover { background: var(--accent); color: white; filter: none; }
+
+.help-popover {
+	position: fixed;
+	z-index: 100;
+	max-width: 340px;
+	/* 내용이 길면(예: RTT p50/p95/p99 설명) 화면 밖으로 잘리지 않게 높이
+	   상한을 두고 내부 스크롤. */
+	max-height: min(70vh, 520px);
+	overflow-y: auto;
+	background: #1c2430;
+	border: 1px solid var(--panel-border);
+	border-radius: 8px;
+	padding: 14px 16px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--text);
+	box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+	white-space: pre-line;
+	display: none;
+}
+.help-popover.open { display: block; }
+
+#stage {
+	flex: 1;
+	overflow-y: auto;
+	padding: 20px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.charts-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 14px;
+}
+
+.chart-box {
+	background: var(--panel);
+	border: 1px solid var(--panel-border);
+	border-radius: 10px;
+	padding: 14px 16px;
+}
+
+.chart-title {
+	font-size: 15px;
+	font-weight: 600;
+	margin-bottom: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+}
+.chart-unit { font-size: 13px; font-weight: 400; color: var(--text-dim); }
+
+.chart-box canvas { width: 100%; height: 130px; display: block; }
+
+/* 범례는 캔버스 안에 그리지 않고 실제 HTML로 아래에 배치 -- 데이터와 안 겹침. */
+.chart-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	margin-top: 10px;
+	font-size: 14px;
+	font-variant-numeric: tabular-nums;
+}
+.chart-legend .legend-item { display: flex; align-items: center; gap: 6px; }
+.chart-legend .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.chart-legend .legend-value { color: var(--text-dim); }
+
+.table-section {
+	background: var(--panel);
+	border: 1px solid var(--panel-border);
+	border-radius: 10px;
+	overflow-x: auto;
+	flex: 1;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+}
+/* 서버 전역 실측치 패널은 내용 크기만큼만 차지 -- 더 중요한 커넥션 표와
+   세로 공간을 반씩 나누지 않는다. */
+.table-section-auto { flex: 0 0 auto; }
+
+.stats-readout {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	padding: 10px 16px 0 16px;
+	font-size: 14px;
+	font-variant-numeric: tabular-nums;
+	color: var(--text-dim);
+}
+.stats-readout b { color: var(--text); font-weight: 600; }
+
+.table-caption {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 16px 0 16px;
+	font-size: 15px;
+	font-weight: 600;
+}
+
+/* "크게 보기" 토글 -- 캡션 줄 맨 오른쪽. 페이지 이동이 없는 <button>이라
+   전역 버튼 스타일을 리셋해 링크처럼 보이게. */
+.caption-link {
+	margin-left: auto;
+	background: none;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	font-size: 13px;
+	font-weight: 400;
+	color: var(--accent);
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.caption-link:hover { text-decoration: underline; filter: none; }
+
+/* 같은 페이지 안에서 확대(#btnExpandConnTable로 토글, app.js 참고) -- 별도
+   페이지로 이동하지 않아 이미 붙어있던 커넥션도 그대로 다 보인다. */
+.table-section.fullscreen {
+	position: fixed;
+	inset: 0;
+	z-index: 500;
+	background: var(--bg);
+	padding: 20px 24px;
+	border: none;
+	border-radius: 0;
+}
+.table-section.fullscreen table { font-size: 17px; }
+.table-section.fullscreen thead th { padding: 14px 16px; font-size: 14px; }
+.table-section.fullscreen tbody td { padding: 14px 16px; }
+.table-section.fullscreen .badge { font-size: 15px; padding: 4px 12px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+thead th {
+	position: sticky;
+	top: 0;
+	background: var(--panel);
+	text-align: left;
+	padding: 10px 12px;
+	color: var(--text-dim);
+	font-weight: 600;
+	border-bottom: 1px solid var(--panel-border);
+	white-space: nowrap;
+}
+tbody td { padding: 8px 12px; border-bottom: 1px solid var(--panel-border); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+
+.badge {
+	display: inline-block;
+	font-size: 13px;
+	padding: 3px 10px;
+	border-radius: 10px;
+	background: var(--gauge-track);
+	color: var(--text-dim);
+}
+.badge.hs-complete { background: rgba(62,207,142,0.15); color: var(--ack); }
+.badge.hs-progress { background: rgba(185,142,255,0.15); color: var(--handshake); }
+
+/* EConnectionState(PacketEnum.h) 색상 -- 0 Invalid, 1 Closed, 2 Pending,
+   3 Open. 위 핸드셰이크 배지와 같은 색 체계(초록=정상, 빨강=종료,
+   보라=진행중) 재사용. */
+td[class*="-state"].state-0 { color: var(--text-dim); }
+td[class*="-state"].state-1 { color: var(--nack); }
+td[class*="-state"].state-2 { color: var(--handshake); }
+td[class*="-state"].state-3 { color: var(--ack); }
+
+.controls {
+	display: flex;
+	gap: 24px;
+	padding: 14px 22px;
+	background: var(--panel);
+	border-top: 1px solid var(--panel-border);
+	flex-shrink: 0;
+	height: 150px;
+}
+
+.control-group { display: flex; flex-direction: column; gap: 10px; }
+.control-group > label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.slider-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.slider-row span:first-child { width: 64px; color: var(--text-dim); }
+.slider-row span:last-child { width: 46px; text-align: right; font-variant-numeric: tabular-nums; }
+.slider-row input[type="range"] { width: 220px; }
+
+.event-log-group { flex: 1; min-width: 0; }
+.event-log {
+	flex: 1;
+	overflow-y: auto;
+	font-family: "Cascadia Code", Consolas, monospace;
+	font-size: 13px;
+	color: var(--text-dim);
+	background: var(--bg);
+	border: 1px solid var(--panel-border);
+	border-radius: 6px;
+	padding: 8px 10px;
+	height: 100px;
+}
+.event-log div { white-space: nowrap; }
+.event-log .ev-ack { color: var(--ack); }
+.event-log .ev-nack { color: var(--nack); }
+.event-log .ev-drop { color: var(--drop); }
+.event-log .ev-handshake { color: var(--handshake); }

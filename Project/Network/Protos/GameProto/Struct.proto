@@ -1,0 +1,32 @@
+syntax = "proto3";
+package GameProtocol;
+
+message Vector3D
+{
+    fixed32 x = 1;
+    fixed32 y = 2;
+    fixed32 z = 3;
+}
+
+message Vector4D
+{
+    fixed32 x = 1;
+    fixed32 y = 2;
+    fixed32 z = 3;
+    fixed32 r = 4; 
+}
+
+message Location
+{
+    Vector3D Coordinate = 1;
+}
+
+message Rotation
+{
+    Vector3D Coordinate = 1;
+}
+
+message Character
+{
+    int32 CharacterClass = 1;
+}
